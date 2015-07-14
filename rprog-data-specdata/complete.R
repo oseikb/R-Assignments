@@ -1,7 +1,7 @@
 complete <- function (directory, id = 1:332)
 {
   #take directory and set it as working directory
-  setwd("C:/Users/saintlyson/Documents/R Assignments/rprog-data-specdata")
+  setwd("C:/Users/saintlyson/Documents/R-Assignments/rprog-data-specdata")
   cur_dir = getwd()
   setwd (paste(cur_dir, directory, sep = "/"))
   
@@ -20,7 +20,7 @@ complete <- function (directory, id = 1:332)
     comp <- rbind(comp, temp)
   }
   
-  setwd("C:/Users/saintlyson/Documents/R Assignments/rprog-data-specdata")
+  setwd("C:/Users/saintlyson/Documents/R-Assignments/rprog-data-specdata")
   names(comp) <- c("id", "nobs")
   comp
 }
