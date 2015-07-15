@@ -1,7 +1,7 @@
 pollutantmean <- function (directory, pollutant, id = 1:332){
   
   #take directory and set it as working directory
-  setwd("C:/Users/saintlyson/Documents/R Assignments/rprog-data-specdata")
+  setwd("C:/Users/saintlyson/Documents/R-Assignments/rprog-data-specdata")
   cur_dir = getwd()
   setwd (paste(cur_dir, directory, sep = "/"))
   
@@ -9,17 +9,16 @@ pollutantmean <- function (directory, pollutant, id = 1:332){
   AllFiles <- dir()
   SomeFiles <- AllFiles[id]
   
-  
-  mn <- vector ("numeric", length(id))
+  pol_s <- data.frame()
   x <- length(id)
   
    for (i in 1:x) 
    {
+     #merge all the pollutant columns in one data frame
      df <- read.csv(SomeFiles[i])
-     mn[i] <- colMeans (df[pollutant], na.rm =  TRUE)
+     pol_s <- rbind(pol_s, df[pollutant])
    }
-   print(length(mn))
-   print(mn)
-  setwd("C:/Users/saintlyson/Documents/R Assignments/rprog-data-specdata")
-  mean(mn, na.rm = TRUE)
+
+  setwd("C:/Users/saintlyson/Documents/R-Assignments/rprog-data-specdata")
+  mn <- colMeans (pol_s, na.rm =  TRUE)
 }
